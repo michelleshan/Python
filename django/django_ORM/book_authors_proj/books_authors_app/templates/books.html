@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <title>Books</title>
+</head>
+<body>
+    <div class='books-container'>
+        <h1>{{ some_book.title }}</h1>
+        <h2>ID:</h2>
+        <p> {{ some_book.id }}</p>
+        <h2>Description:</h2>
+        <p>{{ some_book.desc }}</p>
+        <h2>Authors:</h2>
+            <ul>{% for author in authors %}
+                <li>{{ author.first_name }} {{author.last_name}}</li>
+                <a href='/delete_author/{{ some_book.id }}/{{ author.id }}'>Remove</a>
+                {% endfor %}
+            </ul>
+        <div class='dropdown'>
+            <form action='/add_missing_author/{{ some_book.id }}' method='POST'>
+                {% csrf_token %}
+            <select name='author' placeholder='-add a missing author-'>
+                {% for author in missing_author %}
+                    {% if author not in authors %}
+                <option value='{{ author.id }}'>{{ author.first_name }} {{ author.last_name }}</option>
+                    {% endif %}
+                {% endfor %}
+            </select>
+            <button type='submit'>Add</button>
+            </form>
+        </div>
+        <form action='/return_main' method='POST'>
+            {% csrf_token %}
+        <button type='submit'>Return to Books</button>
+        </form>
+    </div><!--end container-->
+</body>
+</html>

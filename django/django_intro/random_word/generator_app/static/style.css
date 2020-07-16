@@ -1,0 +1,27 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+
+.container{
+    padding: 80px 150px;
+    width: 400px;
+    height: 260px;
+    background-color: rgb(197, 142, 197);
+    font-family: courier new;
+    text-align: center;
+    margin: auto;
+}
+
+button{
+    border: 2px solid rgb(248, 142, 160); 
+    background-color: black;
+    font-family: courier;
+    color: white;
+    display: inline;
+    font-size: 16px;
+    padding: 10px 10px;
+    border-radius: 10px;
+    margin: 10px;
+    box-shadow: 3px 3px pink;
+}

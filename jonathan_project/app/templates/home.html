@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    {%load static%}
+    <link rel="stylesheet" href="{% static 'css/stylehome.css' %}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+</head>
+<body>
+    <nav class="navbar navbar-light bg-light" id="navbar">
+        <label class="navbar-brand" id="logo" href="#">
+            <img src="{% static '/img/CD_symbol.jpg'%}" width="60" height="60" class="d-inline-block align-top" alt="">
+            CodingDojo Quotes
+        </label>
+        <h2 class="navbar-brand" id="navh4">Welcome {{user.first_name}}({{age}})</h2>
+        <form action="/logout" class="p-2 bd-highlight" id="logout" method="POST">
+        {%csrf_token%}
+        <a href="/myaccount" class="btn btn-link">Edit My Account</a>
+            <input type="submit" class="btn btn-danger" value="logout">
+        </form>
+    </nav>
+    <div class="container">
+        <div class="row">
+            <div class="col-7">
+                <h1>All Quotes</h1>
+                {% for quote in allquotes %}
+                    <div class="quotecontainer">
+                        <h3>{{quote.quote}} -{{quote.author}}</h3>
+                        <h4>Posted by: 
+                            <a href="/userquotes/{{quote.uploaded_by.id}}" class="btn btn-link"><h4>{{quote.uploaded_by.first_name}} {{quote.uploaded_by.last_name}}</h4></a> 
+                        </h4>
+                        <h4 id="posted_by">{{quote.likes}} people liked this</h4>
+                        {% if user not in quote.users_who_liked.all %}
+                            <form action="/like/{{quote.id}}" id="like" method="POST">
+                                {% csrf_token %}
+                                    <input type="submit" class="btn btn-success" value="Like">
+                            </form>
+                        {%else%}
+                            <form action="/unlike/{{quote.id}}" id="unlike" method="POST">
+                                {% csrf_token %}
+                                    <input type="submit" class="btn btn-danger" value="Unlike">
+                            </form>
+                        {%endif%}
+                        {% if user == quote.uploaded_by %}
+                            <form action="/delete/{{quote.id}}" id="delete" method="POST">
+                                {% csrf_token %}
+                                    <input type="submit" class="btn btn-dark" value="Delete Quote">
+                            </form>
+                        {%endif%}
+                    </div>
+                {% endfor %}
+            </div>
+            <div class="col-5">
+                {% if messages %}
+                <div class="errors">
+                    <ul>
+                        {% for message in messages %}
+                            <li>{{message}}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                {% endif %}
+                <form action="/addquote" method="POST" class="add">
+                    <h1 class="row justify-content-center">Add a Quote</h1>
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <label for="exampleFormControlInput1">Author</label>
+                        <input type="text" class="form-control" name='author' placeholder="Quote's Author" >
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleFormControlTextarea1">Quote</label>
+                        <textarea class="form-control" id="exampleFormControlTextarea1" name='quote' rows="3"></textarea>
+                    </div>
+                    <input type="submit" class="btn btn-primary" value="Add Quote">
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

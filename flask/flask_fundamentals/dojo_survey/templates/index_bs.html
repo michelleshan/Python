@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <title>Dojo Survey</title>
+</head>
+<body>
+    <div class='container'>
+        <div class="jumbotron">
+            <h1 class="display-4">Dojo Survey</h1>
+            <p class="lead">Please fill out the survey below to help us better serve your needs.</p>
+            <form action='/result' method='post'>
+                <div class="form-group">
+                    <label for="name">Your Name:</label>
+                    <input type="text" class="form-control" name="name" id="name">
+                </div>
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" class="form-control" id="email" name="email" placeholder="name@example.com">
+                </div>
+                <div class="form-group">
+                    <label for="locations">Dojo Location:</label>
+                    <select class="form-control" id="locations" name="locations">
+                        <option>Arlington</option>
+                        <option>Boise</option>
+                        <option>Chicago</option>
+                        <option>Dallas</option>
+                        <option>LA</option>
+                        <option>Oakland</option>
+                        <option>Orange County</option>
+                        <option>San Jose</option>
+                        <option>Online</option>
+                        <option>Seattle</option>
+                        <option>Tulsa</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="language">Favorite Language:</label>
+                    <select class="form-control" id="language" name="language">
+                        <option>C++</option>
+                        <option>Javascript</option>
+                        <option>Python</option>
+                        <option>SQL</option>
+                        <option>Ruby</option>
+                    </select>
+                </div>
+                <p>Would you like to opt-in to receive our monthly newsletter via e-mail?</p>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="newsletter" id="newsletter" value="Yes">
+                    <label class="form-check-label" for="newsletter">Yes! I want to be an amazing programmer!</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="newsletter" id="newsletter" value="No">
+                    <label class="form-check-label" for="newsletter">No, I hate puppies.</label>
+                </div>
+                <p>What type of newsletter content are you most interested in?</p>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="Algorithm challenges" id="content">
+                    <label class="form-check-label" for="defaultCheck1">
+                        Algorithm challenges
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="Interview tips" id="content" name="content">
+                    <label class="form-check-label" for="defaultCheck1">
+                        Interview tips
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="Women in tech" id="content" name="content">
+                    <label class="form-check-label" for="defaultCheck1">
+                        Women in tech
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="Alumni features" id="content" name="content">
+                    <label class="form-check-label" for="defaultCheck1">
+                        Alumni features
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="Puppies" id="content" name="content">
+                    <label class="form-check-label" for="defaultCheck1">
+                        Puppies
+                    </label>
+                </div>
+                <div class="form-group">
+                    <label for="comment">Comments (optional):</label>
+                    <textarea class="form-control" id="comment" name="comment" rows="3"></textarea>
+                </div>
+                <div class="form-submit">
+                    <input class="btn btn-primary" type="submit" id='button' name="submit"></button>
+                </div>
+            </form>
+    </div> <!--end container-->
+</body>
+</html>

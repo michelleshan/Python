@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    {%load static%}
+    <link rel="stylesheet" href="{% static 'css/styleaccount.css' %}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+</head>
+<body>
+    <nav class="navbar navbar-light bg-light" id="navbar">
+        <a class="navbar-brand" id="logo" href="/home">
+            <img src="{% static '/img/CD_symbol.jpg'%}" width="60" height="60" class="d-inline-block align-top" alt="">
+            CodingDojo Quotes
+        </a>
+        <h2 class="navbar-brand" id="navh4">Welcome {{user.first_name}}({{age}})</h2>
+        <form action="/logout" class="p-2 bd-highlight" method="POST">
+        {%csrf_token%}
+        <a href="/home" class="btn btn-primary">Go Back</a>
+            <input type="submit" class="btn btn-danger" value="logout">
+        </form>
+    </nav>
+    <div class="container">
+        <h1 class="text-center">Edit My Account</h1>
+        {% if messages %}
+        <div class="errors">
+            <ul>
+                {% for message in messages %}
+                    <li>{{message}}</li>
+                {% endfor %}
+            </ul>
+        </div>
+        {% endif %}
+        <form action="/update" method="POST">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="exampleFormControlInput1">First Name</label>
+                <input type="text" class="form-control" name="first_name" id="exampleFormControlInput1" value="{{user.first_name}}">
+            </div>
+            <div class="form-group">
+                <label for="exampleFormControlInput1">last Name</label>
+                <input type="text" class="form-control" name="last_name" id="exampleFormControlInput1" value="{{user.last_name}}">
+            </div>
+            <div class="form-group">
+                <label for="exampleFormControlInput1">Email address</label>
+                <input type="email" class="form-control" name="email" id="exampleFormControlInput1" value="{{user.email}}">
+            </div>
+            <div class="form-group">
+                <label for="exampleFormControlInput1">Date of Birth:</label>
+                <input type="date" class="form-control" id="date" name="dob" id="exampleFormControlInput1">
+            </div>
+            <input type="submit" class="btn btn-success" id="submit" value="Update Account" >
+        </form>
+    </div>
+</body>
+</html>

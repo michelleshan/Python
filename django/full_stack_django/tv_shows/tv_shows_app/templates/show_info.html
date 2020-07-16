@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    {% load static %}
+    <link rel='stylesheet' href="{% static 'style.css' %}">
+    <title>Show Info</title>
+</head>
+<body>
+    <div class='container'>
+        <h1>TV Show {{ some_show.id }}</h1>
+        <h2>Title:</h2>
+            <p>{{ some_show.title }}</p>
+        <h2>Network:</h2>
+            <p>{{ some_show.network }}</p>
+        <h2>Release Date:</h2>
+            <p>{{ some_show.release_date }}</p>
+        <h2>Description:</h2>
+            <p>{{ some_show.description }}</p>
+        <h2>Last Updated:</h2>
+            <p>{{ some_show.updated_at }}</p>
+        <a href='/shows/{{ some_show.id }}/edit'>Edit </a>|
+        <a href='/shows/{{ some_show.id }}/destroy'>Delete</a>
+        <a class='backtoshows' href='/shows'>Back to Shows</a>
+    </div>
+</body>
+</html>

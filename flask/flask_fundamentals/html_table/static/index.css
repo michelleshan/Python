@@ -1,0 +1,12 @@
+table{
+    border: 1px solid rgb(172, 172, 172);
+    font-family: arial;
+}
+
+thead{
+    font-weight: bold;
+}
+
+td{
+    border: 1px solid rgb(172, 172, 172);
+}

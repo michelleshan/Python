@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Some Book</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    {%load static%}
+    <link rel='stylesheet' href="{% static 'style.css'%}">
+</head>
+<body>
+    <div class='container'>
+        <h1>Welcome, {{some_user.first_name}}!</h1>
+        <a class='backtobooks' href='/books'>Back to Books</a>
+        <a class='logout' href='/destroy'>Log Out</a>
+        <div class='bookdetails'>
+            <h2>{{some_book.title}}</h2>
+            <p>Added by: {{some_book.added_by.first_name}} {{some_book.added_by.last_name}}</p>
+            <p>Added on: {{some_book.created_at}}</p>
+            <p>Last updated: {{some_book.updated_at}}</p>
+            <p>Description: {{some_book.desc}}</p>
+        </div><!--end bookdetails-->
+        <div class='userswholike'>
+            <h2>Users Who Like This Book:</h2>
+            <ul>
+                {% for lover in some_book_lovers %}
+                <li>{{lover.first_name}} {{lover.last_name}}</li>
+                {% endfor %}
+            </ul>
+            {% if some_user not in some_book_lovers %}
+            <a href='/addFavorite/{{some_book.id}}'>Add to Favorites</a>
+            {% else %}
+            <a href='/unFavorite/{{some_book.id}}'>Un-Favorite</a>
+            {% endif %}
+        </div><!--end userswholike-->
+    </div><!--end container-->
+</body>
+</html>

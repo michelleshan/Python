@@ -1,0 +1,28 @@
+table{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border: 1px solid black;
+}
+
+th{
+    padding: 10px 20px;
+    border: 1px solid grey;
+}
+
+td{
+    padding: 10px 20px;
+    border: 1px solid grey;
+}
+
+.backtoshows{
+    display: block;
+    margin-top: 20px;
+}
+
+ul{
+    list-style-type: none;
+}
+
+.messages{
+    color: red;
+}

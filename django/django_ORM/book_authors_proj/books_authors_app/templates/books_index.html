@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add a Book</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+<body>
+    <div class='container-left'>
+        <h1>Add a Book</h1>
+        <form action='/add_books' method='POST'>
+            {% csrf_token %}
+            Title:<input type="text" name='title'>
+            Description:<input type='text' name='description'>
+            <button type='submit' name='add'>Add</button>
+        </form>
+    </div><!--end container-left-->
+    <div class='container-right'>
+        <table>
+            <thead>
+                <th>ID</th>
+                <th>Title</th>
+                <th>Action</th>
+            </thead>
+            <tbody>
+                {% for book in books %}
+                <tr>
+                <td>{{ book.id }}</td>
+                <td>{{ book.title }}</td>
+                <td><a href='/books/{{ book.id }}'>View</a></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <form action='/'>
+            {% csrf_token %}
+            <button type='submit' class='index'>Return to Main</button>
+        </form>
+    </div><!--end container-right-->
+</body>
+</html>

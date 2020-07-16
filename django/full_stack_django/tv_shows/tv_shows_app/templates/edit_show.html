@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    {% load static %}
+    <link rel='stylesheet' href="{% static 'style.css' %}">
+    <title>Edit Show</title>
+</head>
+<body>
+    <div class='container'>
+        <h1>Edit Show {{ some_show2.id }}</h1>
+        {% if messages %}
+            <ul class="messages">    
+                {% for message in messages %}    
+                    <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>    
+                {% endfor %}
+            </ul>
+        {% endif %}
+        <form action='/shows/{{ some_show2.id }}/update' method='POST'>
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="exampleInputTitle">Title</label>
+                <input type="text" class="form-control" name="title" id="exampleInputTitle" aria-describedby="emailHelp">
+            </div>
+            <div class="form-group">
+                <label for="exampleInputNetwork">Network</label>
+                <input type="text" class="form-control" name="network" id="exampleInputNetwork">
+            </div>
+            <div class="form-group">
+                <label for="exampleInputRelease">Release Date</label>
+                <input type="date" class="form-control" name="release_date" id="exampleInputRelease">
+            <div class="form-group">
+                <label for="exampleInputDescription">Description (optional):</label>
+                <input type="text" class="form-control" name="description" id="exampleInputDescription" rows="5">
+            </div>
+            <button type="submit" class="btn btn-primary">Update</button>
+        </form>
+        <a class='backtoshows' href='/shows'>Back to Shows</a>
+    </div>
+</body>
+</html>

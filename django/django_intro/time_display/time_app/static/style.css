@@ -1,0 +1,28 @@
+*{
+    padding: 20px;
+    margin: 0;
+}
+
+.container{
+    width: 970px;
+    padding-top: 200px;
+    font-family: 'Courier New';
+    color: white;
+    height: 400px;
+    background-color: rgb(110, 110, 110);
+    margin: auto;
+    text-align: center;
+    border: 5px solid black;
+}
+
+p{
+    font-size: 18px;
+}
+
+h1{
+    font-size: 45px;
+}
+
+h2{
+    font-size: 35px;
+}

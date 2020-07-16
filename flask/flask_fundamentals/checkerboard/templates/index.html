@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkerboard</title>
+        <!-- linking a css style sheet -->
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/index.css') }}">
+        <!-- linking a javascript file -->
+        <script type="text/javascript" src="{{ url_for('static', filename='js/index.js') }}"></script>
+        <!-- linking an image
+        <img src="{{ url_for('static', filename='img/my_img.png') }}"> -->
+</head>
+<body>
+    <div class='container'>
+        <table>
+            {% for i in range(0,rows) %}
+            <tr>
+                {% for j in range(0,columns) %}
+                <td class='color1'></td>
+                <td class='color2'></td>
+                {% endfor %}
+            </tr>
+            <tr>
+                {% for j in range(0,column) %}
+                <td class='color2'></td>
+                <td class='color1'></td>
+                {% endfor %}
+            </tr>
+            {% endfor %}
+        </table>
+    </div> <!--end container-->
+</body>
+</html>

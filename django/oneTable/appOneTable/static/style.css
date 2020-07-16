@@ -1,0 +1,50 @@
+.jumbotron{
+    text-align: center;
+}
+
+.container{
+    text-align: center;
+}
+
+table{
+    margin: 20px 20px;
+    border: 2px solid black;
+    display: inline-block;
+}
+
+thead{
+    font-weight: bold;
+}
+
+td{
+    padding: 2px 5px;
+    border: 1px solid grey;
+}
+
+h2{
+    margin: 20px 0px 20px 0px;
+}
+
+button{
+    margin-top: 40px;
+}
+
+.registerdungeon{
+    display: inline-block;
+    vertical-align: top;
+    margin-right: 30px;
+}
+
+.registerprisoner{
+    display: inline-block;
+    vertical-align: top;
+    margin-left: 30px;
+}
+
+.registrationforms{
+margin-bottom: 40px;
+}
+
+.dungeonsprisoners{
+    font-weight: bold;
+}

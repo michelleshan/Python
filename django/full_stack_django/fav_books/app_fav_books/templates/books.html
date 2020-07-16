@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    {%load static%}
+    <link rel='stylesheet' href="{% static 'style.css'%}">
+</head>
+<body>
+    <div class='container'>
+        <h1>Welcome, {{some_user.first_name}}!</h1>
+        <a class='logout' href='/destroy'>Log Out</a>
+        <div class='addbook'>
+            <h1>Add a Favorite Book</h1>
+            <form action='/addBook' method='POST'>
+                {%csrf_token%}
+                <div class='form-row'>
+                    <div class="col-7">
+                        <label for="exampleFormControlInput1">Title </label>
+                        <input type="text" class="form-control" name='title' id="exampleFormControlInput1" required>
+                    </div>
+                    <div class="col-7">
+                        <label for="exampleFormControlInput1">Description </label>
+                        <input type="text" class="form-control" name='desc' id="exampleFormControlInput1" required>
+                    </div>
+                </div>
+                <button type='submit'>Add</button>
+            </form>
+        </div><!--end add book-->
+        <div class='allbooks'>
+            <h1>All Books</h1>
+            {%for book in books%}
+            <h3><a href='/books/{{book.id}}'>{{book.title}}</a></h3>
+            <p>(added by {{book.added_by.first_name}} {{book.added_by.last_name}})</p>
+            <p>{% if book in favorites %}
+                This is one of your favorites.
+                {% else %}
+                <a href='/addFavorite/{{book.id}}'>Add to Favorites</a>
+                {% endif %}
+            </p>
+            {%endfor%}
+        </div><!--end all books-->
+        <div class='favoritebooks'>
+            <a href='/favoriteBooks'>See All Favorites</a>
+        </div>
+    </div>
+</body>
+</html>

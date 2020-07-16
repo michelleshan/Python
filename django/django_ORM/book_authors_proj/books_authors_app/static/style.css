@@ -1,0 +1,9 @@
+table{
+    outline: 1px solid black;
+    margin: 20px 20px;
+}
+
+td{
+    outline: 1px solid grey;
+    padding: 4px 8px;
+}

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dungeons</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+<body>
+    <div class="jumbotron">
+        <h1 class="display-1">Welcome to the Dungeon Database!</h1>
+        <hr class="my-4">
+        <p>View existing dungeons and prisoners in our database and add your own.</p>
+    </div><!--end jumbotron-->
+    <div class='container'>
+        <p>Dungeons</p>
+        <table>
+            <thead>
+                <td>Dungeon ID</td>
+                <td>Name</td>
+                <td>Location</td>
+                <td>Number of Prisoners</td>
+                <td>Delete</td>
+            </thead>
+            <tbody>
+                {% for dungeon in dungeons %}
+                <tr>
+                    <td>{{ dungeon.id }}</td>
+                    <td>{{ dungeon.name }}</td>
+                    <td>{{ dungeon.location }}</td>
+                    <td>{{ dungeon.num_people_inside }}</td>
+                    <td><a href='/delete/{{ dungeon.id }}'>Bye</a></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table><!--end table-->
+        <p>Prisoners</p>
+        <table>
+            <thead>
+                <td>Prisoner ID</td>
+                <td>Prisoner Name</td>
+                <td>Dungeon</td>
+            </thead>
+            <tbody>
+                {% for prisoner in prisoners %}
+                <tr>
+                    <td>{{ prisoner.id }}</td>
+                    <td>{{ prisoner.name }}</td>
+                    <td>{{ prisoner.dungeon_inside.name }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table><!--end table-->
+        <hr class="my-2">
+        <div class='registrationforms'>
+            <div class='registerdungeon'>
+                <h2>Register Your Dungeon!</h2>
+                <form action='/register_dungeon' method='POST'>
+                    {%csrf_token%}
+                    <div class="row">
+                        <div class="col">Name:
+                            <input type="text" class="form-control" name="name">
+                        </div>
+                        <div class="col">Number of Prisoners:
+                            <input type="text" class="form-control" name="prisoners">
+                        </div>
+                    </div>
+                    <div class='row'>
+                        <div class="col">Location:
+                            <input type="text" class="form-control" name="location">
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Register!</button>
+                </form>
+            </div>
+            <div class='registerprisoner'>
+                <h2>Register Your Prisoner!</h2>
+                <form action='/register_prisoner' method='POST'>
+                    {%csrf_token%}
+                    <div class="row">
+                        <div class="col">Name:
+                        <input type="text" class="form-control" name="name">
+                        </div>
+                        <div class="col">
+                            <label for="exampleFormControlSelect1">Dungeon:</label>
+                            <select class="form-control" name='dungeon_inside' id="exampleFormControlSelect1">
+                                {% for dungeon in dungeons %}
+                                <option value= {{dungeon.id}}>{{ dungeon.name }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Imprison!</button>
+            </form>
+        </div>
+        <hr class="my-2">
+        <h2>Dungeons & Prisoners</h2>
+        {% for dungeon in dungeons %}
+        <p class='dungeonsprisoners'>Prisoners at the {{ dungeon.name }}</p>
+            <ul>
+                {% for prisoner in dungeon.all_prisoners.all %}
+                <li>{{ prisoner.name }}</li>
+                {% endfor %}
+            </ul>
+        {% endfor %}
+    </div>
+    </div><!--end container-->
+</body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register/Login</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    {% load static %}
+    <link rel='stylesheet' href="{% static 'style.css' %}">
+</head>
+<body>
+    <div class='container'>
+        <div class='left'>
+            <h1>Registration</h1>
+            {% if messages %}
+            <ul class="messages">    
+                {% for message in messages %}    
+                    <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>   
+                {% endfor %}
+            </ul>
+            {% endif %}
+            <form action='/createuser' method='POST'>
+                {% csrf_token %}
+                <table>
+                    <tr>
+                        <td>First Name </td>
+                        <td><input type='text' name='first_name' value='' required></td>
+                    </tr>
+                    <tr>
+                        <td>Last Name </td>
+                        <td><input type='text' name='last_name' value='' required></td>
+                    </tr>
+                    <tr>
+                        <td>Birthday </td>
+                        <td><input type='date' name='bday' value='' required></td>
+                    </tr>
+                    <tr>
+                        <td>E-mail </td>
+                        <td><input type='email' name='email' value='' required></td>
+                    </tr>
+                    <tr>
+                        <td>Password </td>
+                        <td><input type='password' name='password' required></td>
+                    </tr>
+                    <tr>
+                        <td>Confirm PW </td>
+                        <td><input type='password' name='password_confirm' required></td>
+                    </tr>
+                </table>
+                <button type='submit'>Register</button>
+            </form>
+        </div><!--end left-->
+        <div class='right'>
+            <h1>Login</h1>
+            <form action='/login' method='POST'>
+                {% csrf_token %}
+                <table>
+                    <tr>
+                        <td>E-mail</td>
+                        <td><input type='email' name='email' value='' required></td>
+                    </tr>
+                    <tr>
+                        <td>Password</td>
+                        <td><input type='password' name='password' required></td>
+                    </tr>
+                </table>
+                <button type='submit'>Log In</button>
+            </form>
+        </div><!--end right-->
+    </div><!--end container-->
+</body>
+</html>

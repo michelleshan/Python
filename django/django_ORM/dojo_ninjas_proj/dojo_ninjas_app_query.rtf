@@ -1,0 +1,169 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2511
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+{\*\expandedcolortbl;;}
+\margl1440\margr1440\vieww19460\viewh18160\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 >>> from dojo_ninjas_app.models import*\
+>>> Dojo.objects.create(name='Kodokan',city='Tokyo',state='JP')\
+<Dojo: Dojo object (1)>\
+>>> Dojo.objects.create(name='Aikikai',city='Tokyo',state='JP')\
+<Dojo: Dojo object (2)>\
+>>> Dojo.objects.create(name='Noma',city='Gokoku-ji',state='JP')\
+<Dojo: Dojo object (3)>\
+>>> Dojo.objects.get(id=1).delete()\
+(1, \{'dojo_ninjas_app.Ninja': 0, 'dojo_ninjas_app.Dojo': 1\})\
+>>> Dojo.objects.get(id=2).delete()\
+(1, \{'dojo_ninjas_app.Ninja': 0, 'dojo_ninjas_app.Dojo': 1\})\
+>>> Dojo.objects.get(id=3).delete()\
+(1, \{'dojo_ninjas_app.Ninja': 0, 'dojo_ninjas_app.Dojo': 1\})\
+>>> Dojo.objects.all()\
+<QuerySet []>\
+>>> Dojo.objects.create(name='Mojo-Jojo',city='New York',state='NY')\
+<Dojo: Dojo object (4)>\
+>>> Dojo.objects.create(name='Squidward',city='Milwaukee',state='WI')\
+<Dojo: Dojo object (5)>\
+>>> Dojo.objects.create(name='Coding',city='Dallas',state='TX')\
+<Dojo: Dojo object (6)>\
+>>> Ninja.objects.create(first_name='Michelle',last_name='Han',dojo_inside=Dojo.objects.get(id=4))\
+<Ninja: Ninja object (1)>\
+>>> Ninja.objects.create(first_name='Harry',last_name='Styles',dojo_inside=Dojo.objects.get(id=5))\
+<Ninja: Ninja object (2)>\
+>>> Ninja.objects.create(first_name='Gigi',last_name='Hadid',dojo_inside=Dojo.objects.get(id=4))\
+<Ninja: Ninja object (3)>\
+>>> Ninja.objects.create(first_name='Kylie',last_name='Jenner',dojo_inside=Dojo.objects.get(id=4))\
+<Ninja: Ninja object (4)>\
+>>> Ninja.objects.create(first_name='Spongebob',last_name='Squarepants',dojo_inside=Dojo.objects.get(id=5))\
+<Ninja: Ninja object (5)>\
+>>> Ninja.objects.create(first_name='Patrick',last_name='Star',dojo_inside=Dojo.objects.get(id=5))\
+<Ninja: Ninja object (6)>\
+>>> Ninja.objects.create(first_name='Britney',last_name='Spears',dojo_inside=Dojo.objects.get(id=6))\
+<Ninja: Ninja object (7)>\
+>>> Ninja.objects.create(first_name='Amanda',last_name='Bynes',dojo_inside=Dojo.objects.get(id=6))\
+<Ninja: Ninja object (8)>\
+>>> Ninja.objects.create(first_name='Kylo',last_name='Ren',dojo_inside=Dojo.objects.get(id=6))\
+<Ninja: Ninja object (9)>\
+>>> Dojo.object.get(id=1).dojo_ninjas.all()\
+Traceback (most recent call last):\
+  File "<console>", line 1, in <module>\
+AttributeError: type object 'Dojo' has no attribute 'object'\
+>>> Dojo.objects.get(id=1).dojo_ninjas.all()\
+Traceback (most recent call last):\
+  File "<console>", line 1, in <module>\
+  File "/Users/michellehan/Documents/HackerHouse/python_stack/my_environments/djangoPy3Env/lib/python3.7/site-packages/django/db/models/manager.py", line 82, in manager_method\
+    return getattr(self.get_queryset(), name)(*args, **kwargs)\
+  File "/Users/michellehan/Documents/HackerHouse/python_stack/my_environments/djangoPy3Env/lib/python3.7/site-packages/django/db/models/query.py", line 408, in get\
+    self.model._meta.object_name\
+dojo_ninjas_app.models.Dojo.DoesNotExist: Dojo matching query does not exist.\
+>>> Dojo.objects.get(id=1).dojo_ninjas()\
+Traceback (most recent call last):\
+  File "<console>", line 1, in <module>\
+  File "/Users/michellehan/Documents/HackerHouse/python_stack/my_environments/djangoPy3Env/lib/python3.7/site-packages/django/db/models/manager.py", line 82, in manager_method\
+    return getattr(self.get_queryset(), name)(*args, **kwargs)\
+  File "/Users/michellehan/Documents/HackerHouse/python_stack/my_environments/djangoPy3Env/lib/python3.7/site-packages/django/db/models/query.py", line 408, in get\
+    self.model._meta.object_name\
+dojo_ninjas_app.models.Dojo.DoesNotExist: Dojo matching query does not exist.\
+>>> Dojo.objects.get(id=1).dojo_ninjas.all()\
+Traceback (most recent call last):\
+  File "<console>", line 1, in <module>\
+  File "/Users/michellehan/Documents/HackerHouse/python_stack/my_environments/djangoPy3Env/lib/python3.7/site-packages/django/db/models/manager.py", line 82, in manager_method\
+    return getattr(self.get_queryset(), name)(*args, **kwargs)\
+  File "/Users/michellehan/Documents/HackerHouse/python_stack/my_environments/djangoPy3Env/lib/python3.7/site-packages/django/db/models/query.py", line 408, in get\
+    self.model._meta.object_name\
+dojo_ninjas_app.models.Dojo.DoesNotExist: Dojo matching query does not exist.\
+>>> dojo1= Dojo.objects.get(id=1)\
+Traceback (most recent call last):\
+  File "<console>", line 1, in <module>\
+  File "/Users/michellehan/Documents/HackerHouse/python_stack/my_environments/djangoPy3Env/lib/python3.7/site-packages/django/db/models/manager.py", line 82, in manager_method\
+    return getattr(self.get_queryset(), name)(*args, **kwargs)\
+  File "/Users/michellehan/Documents/HackerHouse/python_stack/my_environments/djangoPy3Env/lib/python3.7/site-packages/django/db/models/query.py", line 408, in get\
+    self.model._meta.object_name\
+dojo_ninjas_app.models.Dojo.DoesNotExist: Dojo matching query does not exist.\
+>>> Dojo.object.get(id=4).dojo_ninjas.all()\
+Traceback (most recent call last):\
+  File "<console>", line 1, in <module>\
+AttributeError: type object 'Dojo' has no attribute 'object'\
+>>> dojo4=Dojo.objects.get(id=4)\
+>>> dojo4.dojo_ninjas.all()\
+<QuerySet [<Ninja: Ninja object (1)>, <Ninja: Ninja object (3)>, <Ninja: Ninja object (4)>]>\
+>>> dojo5=Dojo.objects.get(id=5)\
+>>> dojo5.dojo_ninjas.all()\
+<QuerySet [<Ninja: Ninja object (2)>, <Ninja: Ninja object (5)>, <Ninja: Ninja object (6)>]>\
+>>> dojo6=Dojo.objects.get(id=6)\
+>>> dojo6.dojo_ninjas.all()\
+<QuerySet [<Ninja: Ninja object (7)>, <Ninja: Ninja object (8)>, <Ninja: Ninja object (9)>]>\
+>>> lastninja=Ninja.objects.get(id=9)\
+>>> lastninja.dojo_ninjas.Dojo.name()\
+Traceback (most recent call last):\
+  File "<console>", line 1, in <module>\
+AttributeError: 'Ninja' object has no attribute 'dojo_ninjas'\
+>>> Dojo.objects.name.dojo_ninjas()\
+Traceback (most recent call last):\
+  File "<console>", line 1, in <module>\
+AttributeError: 'str' object has no attribute 'dojo_ninjas'\
+>>> lastninja.dojo_ninjas.Dojo.name\
+Traceback (most recent call last):\
+  File "<console>", line 1, in <module>\
+AttributeError: 'Ninja' object has no attribute 'dojo_ninjas'\
+>>> lastNinja.dojo_inside.name()\
+Traceback (most recent call last):\
+  File "<console>", line 1, in <module>\
+NameError: name 'lastNinja' is not defined\
+>>> lastninja.dojo_inside.name()\
+Traceback (most recent call last):\
+  File "<console>", line 1, in <module>\
+TypeError: 'str' object is not callable\
+>>> lastninja.dojo_inside.name\
+'Coding'\
+>>> lastninja.dojo_inside.id\
+6\
+>>> 1\
+1\
+>>> Dojo.objects.get(id=4).dojo_ninjas.all()\
+<QuerySet [<Ninja: Ninja object (1)>, <Ninja: Ninja object (3)>, <Ninja: Ninja object (4)>]>\
+>>> exit()\
+(djangoPy3Env) Michelles-MacBook-Air:dojo_ninjas_proj michellehan$ python3 manage.py makemigrations\
+You are trying to add a non-nullable field 'desc' to dojo without a default; we can't do that (the database needs something to populate existing rows).\
+Please select a fix:\
+ 1) Provide a one-off default now (will be set on all existing rows with a null value for this column)\
+ 2) Quit, and let me add a default in models.py\
+Select an option: 1\
+Please enter the default value now, as valid Python\
+The datetime and django.utils.timezone modules are available, so you can do e.g. timezone.now\
+Type 'exit' to exit this prompt\
+>>> "Hello"\
+Migrations for 'dojo_ninjas_app':\
+  dojo_ninjas_app/migrations/0002_dojo_desc.py\
+    - Add field desc to dojo\
+(djangoPy3Env) Michelles-MacBook-Air:dojo_ninjas_proj michellehan$ python3 manage.py makemigrations\
+No changes detected\
+(djangoPy3Env) Michelles-MacBook-Air:dojo_ninjas_proj michellehan$ python3 manage.py migrate\
+Operations to perform:\
+  Apply all migrations: admin, auth, contenttypes, dojo_ninjas_app, sessions\
+Running migrations:\
+  Applying dojo_ninjas_app.0002_dojo_desc... OK\
+(djangoPy3Env) Michelles-MacBook-Air:dojo_ninjas_proj michellehan$ python3 manage.py shell\
+Python 3.7.6 (default, Dec 30 2019, 19:38:26) \
+[Clang 11.0.0 (clang-1100.0.33.16)] on darwin\
+Type "help", "copyright", "credits" or "license" for more information.\
+(InteractiveConsole)\
+>>> from dojo_ninjas_app.models import*\
+>>> Dojo.objects.first().desc\
+'Hello'\
+>>> Dojo.objects.create(name='Running',city='Austin',state='TX',desc='The Running Dojo is a community of runners of all ages, paces, genders, etc.')\
+<Dojo: Dojo object (7)>\
+>>> Dojo.objects.get(id=7).values()\
+Traceback (most recent call last):\
+  File "<console>", line 1, in <module>\
+AttributeError: 'Dojo' object has no attribute 'values'\
+>>> Dojo.objects.get(id=7).values.all()\
+Traceback (most recent call last):\
+  File "<console>", line 1, in <module>\
+AttributeError: 'Dojo' object has no attribute 'values'\
+>>> Dojo.objects.get(id=7).values()\
+Traceback (most recent call last):\
+  File "<console>", line 1, in <module>\
+AttributeError: 'Dojo' object has no attribute 'values'\
+>>> Dojo.objects.get(id=7).__dict__\
+\{'_state': <django.db.models.base.ModelState object at 0x10d04ff50>, 'id': 7, 'name': 'Running', 'city': 'Austin', 'state': 'TX', 'desc': 'The Running Dojo is a community of runners of all ages, paces, genders, etc.', 'created_at': datetime.datetime(2020, 3, 12, 21, 41, 3, 470174, tzinfo=<UTC>), 'updated_at': datetime.datetime(2020, 3, 12, 21, 41, 3, 470542, tzinfo=<UTC>)\}}

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Submitted Info</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='index.css') }}">
+    <script type="text/javascript" src="{{ url_for('static', filename='index.js') }}"></script>
+    <!-- <img src="{{ url_for('static', filename='my_img.png') }}"> -->
+</head>
+<body>
+    <h1>Submitted Info</h1>
+    <p>
+        Name: {{name}}
+        Email: {{email}}
+        Dojo Location: {{location}}
+        Favorite Language: {{language}}
+        Newsletter: {{newsletter}}
+        Newsletter content: {{content}}
+        Comment: {{comment}}
+    </p>
+    <form action='/', method='get'>
+        <button type='submit'>Go Back</button>
+    </form>
+</body>
+</html>

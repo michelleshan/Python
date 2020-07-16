@@ -1,0 +1,21 @@
+.big{
+    height: 200px;
+    width: 1100px;
+    overflow-y: scroll;
+}
+
+.green{
+    color: green;
+}
+
+.red{
+    color: red;
+}
+
+.jumbotron{
+    text-align: center;
+}
+
+.form-row{
+    margin-bottom: 20px;
+}

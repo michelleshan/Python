@@ -1,0 +1,19 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+.container{
+    border: 2px solid black;
+}
+
+.color1{
+    width: 60px;
+    height: 60px;
+    background-color: red;
+}
+
+.color2{
+    width: 60px;
+    height: 60px;
+    background-color: black;
+}
